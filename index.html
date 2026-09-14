@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSH 研究服务 — AI 驱动的情报判断</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a1a; color: #eee; line-height: 1.7; }
+        
+        /* Hero */
+        .hero { padding: 80px 20px 60px; text-align: center; background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 100%); }
+        .hero h1 { font-size: 3em; color: #00d9ff; margin-bottom: 15px; }
+        .hero .subtitle { font-size: 1.3em; color: #aaa; margin-bottom: 30px; }
+        .hero .tagline { display: inline-block; background: #00d9ff; color: #0a0a1a; padding: 8px 20px; border-radius: 6px; font-weight: bold; margin-bottom: 40px; }
+        
+        /* Value Props */
+        .values { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        .values h2 { color: #00d9ff; font-size: 2em; margin-bottom: 40px; text-align: center; }
+        .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .value-card { background: #16213e; padding: 30px; border-radius: 12px; border: 1px solid #0f3460; }
+        .value-card h3 { color: #00d9ff; margin-bottom: 15px; font-size: 1.3em; }
+        .value-card p { color: #aaa; }
+        
+        /* Pricing */
+        .pricing { max-width: 1000px; margin: 0 auto; padding: 60px 20px; background: #1a1a2e; }
+        .pricing h2 { color: #00d9ff; font-size: 2em; margin-bottom: 40px; text-align: center; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .price-card { background: #16213e; padding: 30px; border-radius: 12px; border: 2px solid #0f3460; position: relative; }
+        .price-card.featured { border-color: #00d9ff; transform: scale(1.05); }
+        .price-card .badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #00d9ff; color: #0a0a1a; padding: 4px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .price-card h3 { color: #fff; margin-bottom: 10px; }
+        .price-card .price { font-size: 2.5em; color: #00d9ff; margin-bottom: 20px; }
+        .price-card .price span { font-size: 0.5em; color: #aaa; }
+        .price-card ul { list-style: none; margin-bottom: 25px; }
+        .price-card li { padding: 8px 0; border-bottom: 1px solid #0f3460; color: #ccc; }
+        .price-card li:before { content: "✓ "; color: #00ff88; }
+        
+        /* Recent Reports */
+        .reports { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        .reports h2 { color: #00d9ff; font-size: 2em; margin-bottom: 30px; text-align: center; }
+        .report-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .report-card { background: #16213e; padding: 20px; border-radius: 8px; border: 1px solid #0f3460; }
+        .report-card .title { color: #00d9ff; font-weight: bold; margin-bottom: 8px; }
+        .report-card .meta { color: #888; font-size: 12px; }
+        
+        /* Waitlist */
+        .waitlist { max-width: 600px; margin: 0 auto; padding: 60px 20px; background: #1a1a2e; }
+        .waitlist h2 { color: #00d9ff; font-size: 2em; margin-bottom: 20px; text-align: center; }
+        .waitlist p { color: #aaa; text-align: center; margin-bottom: 30px; }
+        .waitlist-form { display: flex; gap: 10px; }
+        .waitlist-form input { flex: 1; padding: 14px; border: 2px solid #0f3460; border-radius: 8px; background: #1a1a2e; color: #eee; font-size: 16px; }
+        .waitlist-form input:focus { outline: none; border-color: #00d9ff; }
+        .waitlist-form button { background: #00d9ff; color: #0a0a1a; border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .waitlist-form button:hover { background: #00b8d4; }
+        
+        /* Footer */
+        .footer { text-align: center; padding: 40px 20px; color: #666; border-top: 1px solid #0f3460; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .waitlist-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🔍 DSH 研究服务</h1>
+        <p class="subtitle">AI 驱动的情报判断，不是 AI 生成的噪音</p>
+        <div class="tagline">付的不是信息生成费，是判断力费</div>
+    </div>
+    
+    <div class="values">
+        <h2>为什么付费，而不是用免费 AI？</h2>
+        <div class="value-grid">
+            <div class="value-card">
+                <h3>📊 5-10 轮搜索</h3>
+                <p>免费 AI 单次搜索。我们用 5-10 轮不同关键词，交叉验证，确保信息完整性。</p>
+            </div>
+            <div class="value-card">
+                <h3>🔗 每条主张带信源</h3>
+                <p>免费 AI 无信源。我们每条主张都标注 S/A/B/C 级信源链接，可追溯、可验证。</p>
+            </div>
+            <div class="value-card">
+                <h3>⚖️ 区分炒作与现实</h3>
+                <p>免费 AI 混淆叙事与事实。我们明确标注"炒作/真实/无法验证"，提供判断力。</p>
+            </div>
+            <div class="value-card">
+                <h3>📈 追踪趋势变化</h3>
+                <p>免费 AI 无上下文。我们对比历史报告，追踪趋势，发现早期信号。</p>
+            </div>
+            <div class="value-card">
+                <h3>🛡️ 有人负责质量</h3>
+                <p>免费 AI 无责任。我们人工审核每份报告，纠错可追责。</p>
+            </div>
+            <div class="value-card">
+                <h3>🎯 专注特定领域</h3>
+                <p>免费 AI 通用回答。我们专注 Web 4.0 / AI Agent 经济，有领域深度。</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pricing">
+        <h2>定价方案</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>单次报告</h3>
+                <div class="price">$20<span>/份</span></div>
+                <ul>
+                    <li>自定义研究主题</li>
+                    <li>5 轮搜索，交叉验证</li>
+                    <li>50-100 行结构化报告</li>
+                    <li>所有主张带信源链接</li>
+                    <li>区分炒作与现实</li>
+                    <li>5-10 分钟交付</li>
+                </ul>
+                <button onclick="document.getElementById('waitlist').scrollIntoView()">加入等待列表</button>
+            </div>
+            <div class="price-card featured">
+                <div class="badge">推荐</div>
+                <h3>月度订阅</h3>
+                <div class="price">$200<span>/月</span></div>
+                <ul>
+                    <li>每日情报简报</li>
+                    <li>5 次自定义研究</li>
+                    <li>趋势追踪 + 早期预警</li>
+                    <li>优先级处理</li>
+                    <li>判断日志更新</li>
+                    <li>信源分级评估</li>
+                </ul>
+                <button onclick="document.getElementById('waitlist').scrollIntoView()">加入等待列表</button>
+            </div>
+            <div class="price-card">
+                <h3>企业版</h3>
+                <div class="price">面议</div>
+                <ul>
+                    <li>多主题监控</li>
+                    <li>定制化格式</li>
+                    <li>API 接入</li>
+                    <li>专属分析师</li>
+                    <li>SLA 保障</li>
+                    <li>私有部署选项</li>
+                </ul>
+                <button onclick="document.getElementById('waitlist').scrollIntoView()">联系我们</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="reports">
+        <h2>近期报告样例</h2>
+        <div class="report-list">
+            <div class="report-card">
+                <div class="title">Web 4.0 情报简报 — 2026-09-14</div>
+                <div class="meta">376 行 | 12 轮搜索 | 中国监管标准化专题</div>
+                <div class="meta">关键发现：支付宝 AI 收、KYA 标准立项</div>
+            </div>
+            <div class="report-card">
+                <div class="title">Web 4.0 情报简报 — 2026-09-13</div>
+                <div class="meta">205 行 | 6 轮搜索 | 基础设施层 + 监管层</div>
+                <div class="meta">关键发现：AWS AgentCore GA、Fortune 幽灵卡特尔</div>
+            </div>
+            <div class="report-card">
+                <div class="title">Conway Cloud 商业前景拆解</div>
+                <div class="meta">深度分析 | 竞争格局 + 风险评估</div>
+                <div class="meta">关键判断：做正确的事，但可能做太早了</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="waitlist" id="waitlist">
+        <h2>🚀 加入等待列表</h2>
+        <p>服务即将上线。留下邮箱，第一时间获取早鸟优惠。</p>
+        <form class="waitlist-form" onsubmit="submitWaitlist(event)">
+            <input type="email" id="email" placeholder="你的邮箱" required>
+            <button type="submit">加入</button>
+        </form>
+        <p id="waitlist-msg" style="margin-top: 15px; color: #00ff88;"></p>
+    </div>
+    
+    <div class="footer">
+        <p>Powered by DSH Harness + SenseNova</p>
+        <p style="margin-top: 8px;">微信/支付宝转账 → 报告发送</p>
+        <p style="margin-top: 15px; color: #444;">© 2026 DSH 研究服务</p>
+    </div>
+    
+    <script>
+        function submitWaitlist(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            if (email) {
+                // 简单存储到本地（实际应该发送到后端）
+                let list = JSON.parse(localStorage.getItem('waitlist') || '[]');
+                list.push({email, date: new Date().toISOString()});
+                localStorage.setItem('waitlist', JSON.stringify(list));
+                document.getElementById('waitlist-msg').textContent = '✅ 已加入！服务上线后第一时间通知你。';
+                document.getElementById('email').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
